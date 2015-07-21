@@ -81,4 +81,14 @@ Rails.application.configure do
   # Note to set this to your actual host name
 config.action_mailer.default_url_options = { host: 'vast-harbor-8158.herokuapp.com', port: 3000 }
 
+# Sets Paperclips to upload images to Amazon s3
+config.paperclip_defaults = {
+   :storage => :s3,
+    :s3_credentials => {
+    :bucket => ENV['AWS_BUCKET'],
+    :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+    :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+  }
+}
+
 end
