@@ -2,8 +2,8 @@ class PinsController < ApplicationController
   before_action :set_pin, only: [:show, :edit, :update, :destroy]
 
   def index
-   @pins = Pin.all.order("created_at DESC") #this orders the Pins by reverse chronological order (latest first) as opposed to date which is what they were before.
- end
+   @pins = Pin.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
+ end 
 
   def show
   end
